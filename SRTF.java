@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 
-public class SRTF {
-	ArrayList<Process> a;
-	int fullTime;
+public class SRTF extends schedule{
 
 	public SRTF(AllProcesses allPrecess) {
 		this.a = allPrecess.all;
 		this.fullTime = allPrecess.getFullTime();
+		this.allPrecess = allPrecess;
+
 	}
 
 	public void SRTF_Algorithm()
@@ -25,7 +25,13 @@ public class SRTF {
 					if (best == null)
 						best = p;
 					else if (p.RemainingTime() < best.RemainingTime())
-						best = p;
+					{
+						if(p.RemainingTime() == best.RemainingTime() && p.pid > best.pid);//do nothing
+						
+						else//in case of tie
+							best = p;
+
+					}
 
 				}
 			}
@@ -50,15 +56,5 @@ public class SRTF {
 		}
 	}
 	
-	public void printChart(){
-		for (Process p : a)
-		{
-
-			for (int i = 0; i < p.timeFinishedWork.size(); i++)
-				System.out.println(p.pid + " " + p.timeStartWork.get(i) + " "
-						+ p.timeFinishedWork.get(i));
-			System.out.println("------------------");
-		}
-	}
 
 }

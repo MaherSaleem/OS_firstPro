@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
-public class SJF {
-	ArrayList<Process> a;
-	int fullTime;
-
+public class SJF  extends schedule{
+	
+	
 	public SJF(AllProcesses allPrecess) {
 		this.a = allPrecess.all;
 		this.fullTime = allPrecess.getFullTime();
+		this.allPrecess = allPrecess;
 	}
 
 	public void SJF_Algorithm()
@@ -21,8 +21,13 @@ public class SJF {
 					// the first process in the queue
 					if (best == null)
 						best = p;
-					else if (p.burstTime < best.burstTime)
-						best = p;
+					else if (p.burstTime <= best.burstTime )
+					{
+						if(p.burstTime == best.burstTime && p.pid > best.pid);//do nothing
+							
+						else//in case of tie
+							best = p;
+					}
 
 				}
 			}
@@ -41,10 +46,5 @@ public class SJF {
 		}
 	}
 	
-	public void printChart(){
-		for (Process p : a){
-			System.out.println(p.pid + " " + p.timeStartWork.get(0) + " " + p.timeFinishedWork.get(0));
-		}
-	}
 
 }

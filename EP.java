@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 
-public class EP {
-	ArrayList<Process> a;
-	int fullTime;
+public class EP extends schedule {
 
 	public EP(AllProcesses allPrecess) {
 		this.a = allPrecess.all;
 		this.fullTime = allPrecess.getFullTime();
+		this.allPrecess = allPrecess;
+
 	}
 
 	public void EP_Algorithm()
@@ -48,15 +48,5 @@ public class EP {
 		}
 	}
 	
-	public void printChart(){
-		for (Process p : a)
-		{
-
-			for (int i = 0; i < p.timeFinishedWork.size(); i++)
-				System.out.println(p.pid + " " + p.timeStartWork.get(i) + " "
-						+ p.timeFinishedWork.get(i));
-			System.out.println("------------------");
-		}
-	}
 
 }

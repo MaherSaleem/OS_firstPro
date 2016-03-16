@@ -4,14 +4,16 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
-public class Driver {
 
+public class DriverCmd {
 	public static void main(String[] args)
 	{
 		
+		System.out.println(args[0]);
 		AllProcesses allProcesses = new AllProcesses();//
-		int timeQuantum = 4;
-		String fileName = "SJF2.txt";
+		String fileName = args[0];
+		int timeQuantum = Integer.parseInt(args[1]);
+		
 		Scanner in = null;
 		try
 		{

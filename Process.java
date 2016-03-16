@@ -59,6 +59,15 @@ public class Process {
 			return Integer.MAX_VALUE;
 		return burstTime - timeFinished;
 	}
+	
+	public int turnaround(){
+		return this.timeFinishedWork.get(timeFinishedWork.size()-1) - this.arriveTime;
+	}
+	
+	
+	public int waitTime(){
+		return this.turnaround() - this.burstTime;
+	}
 
 	
 	
