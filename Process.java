@@ -10,6 +10,7 @@ public class Process {
 	public int interval ;
 	public int  deadline;
 	public int timeFinished;//time finished from the burst
+	public int priority;
 	
 	public ArrayList<Integer> timeStartWork;
 	public ArrayList<Integer> timeFinishedWork;
@@ -17,13 +18,14 @@ public class Process {
 	
 	/*Constructor*/
 	public Process(int pid, int arriveTime, int burstTime, int repeat,
-			int interval, int deadline) {
+			int interval, int deadline , int priority) {
 		this.pid = pid;
 		this.arriveTime = arriveTime;
 		this.burstTime = burstTime;
 		this.repeat = repeat;
 		this.interval = interval;
 		this.deadline = deadline;
+		this.priority = priority;
 		
 		this.timeStartWork= new ArrayList<Integer>();
 		this.timeFinishedWork =new ArrayList<Integer>();

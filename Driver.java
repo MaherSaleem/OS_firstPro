@@ -10,8 +10,8 @@ public class Driver {
 	{
 		
 		AllProcesses allProcesses = new AllProcesses();//
-		int timeQuantum = 4;
-		String fileName = "SJF2.txt";
+		int timeQuantum = 1;
+		String fileName = "m.txt";
 		Scanner in = null;
 		try
 		{
@@ -29,19 +29,19 @@ public class Driver {
 		//read the processes from the file
 		while (in.hasNextInt())
 		{
-			 temp = new Process(in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt());
+			 temp = new Process(in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt());
 			 allProcesses.addNewProcess(temp);
 		}
 		
 //		System.out.println(allProcesses.toString());
 		
-		SJF sjf = new SJF(allProcesses);
-		sjf.SJF_Algorithm();
-		sjf.printChart();
+//		SJF sjf = new SJF(allProcesses);
+//		sjf.SJF_Algorithm();
+//		sjf.printChart();
 		
-//		RR rr = new RR(allProcesses , timeQuantum);
-//		rr.RR_Algorithm();
-//		rr.printChart();
+		RR rr = new RR(allProcesses , timeQuantum);
+		rr.RR_Algorithm();
+		rr.printChart();
 		
 //		SRTF srtf = new SRTF(allProcesses);
 //		srtf.SRTF_Algorithm();

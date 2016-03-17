@@ -31,7 +31,7 @@ public class DriverCmd {
 		//read the processes from the file
 		while (in.hasNextInt())
 		{
-			 temp = new Process(in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt());
+			 temp = new Process(in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt(),in.nextInt());
 			 allProcesses.addNewProcess(temp);
 		}
 		

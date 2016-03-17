@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class AllProcesses {
@@ -80,7 +79,7 @@ public class AllProcesses {
 		}
 		
 		public String toString(){
-			return "pid = " + pid + " arrive time = " + arriveTime + " finish time = " + finishTime;
+			return "pid = " + pid + " start time = " + arriveTime + " finish time = " + finishTime;
 		}
 
 	}

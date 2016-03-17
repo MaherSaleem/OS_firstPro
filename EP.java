@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 
 public class EP extends schedule {
@@ -13,21 +12,32 @@ public class EP extends schedule {
 	public void EP_Algorithm()
 	{
 		Process best = null;
-		for (int i = 0; i < fullTime; )
+		boolean isCpuIdel = true;//
+		
+		for (int i = 0; i < fullTime; i++ )
 		{
+			isCpuIdel = true;
 			if(i == 0)
 				 best = null;
 			for (Process p : a)
 			{
 				if (p.isInReadyQueue(i) )
 				{
+					isCpuIdel = false;//there is a proccess in the queue , so its not idil
 					// the first process in the queue
 					if (best == null)
 						best = p;
-					else if (p.pid < best.pid)//TODO Ask to doctor
-						best = p;
+					else if (p.priority <= best.priority  )//check the priority
+					{
+						if(p.priority  == best.priority  && p.pid > best.pid);//do nothing
+							
+						else//in case of tie
+							best = p;
+					}
 				}
 			}
+				if(isCpuIdel)
+					fullTime++;//the cpu must work for additional second
 
 				// no process arrive at time i (queue in empty)
 				if (best != null)
@@ -43,7 +53,6 @@ public class EP extends schedule {
 					best.timeFinished += 1;
 					if(best.timeFinished == best.burstTime)//the process has finished
 						best=null;// so its not the new best
-					i = i + 1; 
 				}
 		}
 	}

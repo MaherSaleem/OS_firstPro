@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 
 public class SRTF extends schedule{
@@ -13,14 +12,18 @@ public class SRTF extends schedule{
 	public void SRTF_Algorithm()
 	{
 		Process best = null;
-		for (int i = 0; i < fullTime; )
+		boolean isCpuIdel = true;
+		
+		for (int i = 0; i < fullTime; i++)
 		{
+			isCpuIdel = true;
 			if(i == 0)
 				 best = null;
 			for (Process p : a)
 			{
 				if (p.isInReadyQueue(i) )
 				{
+					isCpuIdel = false;//there is a proccess in the queue , so its not idil
 					// the first process in the queue
 					if (best == null)
 						best = p;
@@ -35,6 +38,10 @@ public class SRTF extends schedule{
 
 				}
 			}
+			
+			if(isCpuIdel)
+				fullTime++;//the cpu must work for additional second
+
 
 				// no process arrive at time i (queue in empty)
 				if (best != null)
@@ -51,7 +58,6 @@ public class SRTF extends schedule{
 					if(best.timeFinished == best.burstTime)//the process has finished
 						best=null;// so its not the new best
 
-					i = i + 1; 
 				}
 		}
 	}
